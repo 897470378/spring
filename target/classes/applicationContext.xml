@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:lang="http://www.springframework.org/schema/lang"
+    xmlns:jms="http://www.springframework.org/schema/jms"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:oxm="http://www.springframework.org/schema/oxm"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:tool="http://www.springframework.org/schema/tool"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd
+        http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+   
+<!-- 1、class：被容器管理对象的完整类名。
+
+	 2、name：被容器管理对象的名称，根据此名称从容器中获得该对象，可以重复，可以使用特殊字符。
+
+     3、id：被容器管理对象的唯一标识，id不可重复，不可使用特殊字符，作用与name相同，建议使用name。
+
+	 4、scope：
+
+	　　(1)singleton(默认):单例对象，该对象在spring容器中只会存在一个。
+	
+	　　(2)prototype:多例模式，配置为多例的对象不会在spring容器中创建，只有在从容器中要获取该对象的时候，容器对该对象进行创建，每次创建都是一个新的对象。注意在与struts2配合使用的时候，struts2中的action对象必须要配置成prototype这种多例模式。
+	
+	　　(3)request:web项目中，创建一个对象，将其存放在request域中。
+	
+	　　(4)session:web项目中，创建一个对象，将其存放在session域中。
+
+	 5、init-method与destory-method 
+	    init-method是对象创建的时候所执行的方法，destory-method是对象销毁时所执行的方法。对象必须是单例的，同时容器关闭的时候，对象的销毁方法才会执行。 -->
+
+
+	  <!--  
+	  
+		  <bean name="user" class="com.sikiedu.bean.User"> 		
+		   		//constructor-arg 表示构造器赋值 
+		   		<constructor-arg name="name" value="zxt"></constructor-arg>
+		   		<constructor-arg name="age" value="11"></constructor-arg>
+		  		
+		  		
+		  		//property 表示set赋值
+		  		<property name="name" value="zxt"></property>
+		  		<property name="age" value="11"></property> 
+		   </bean>  
+	     
+	   -->  
+	   
+	   
+	   
+	   <!-- 
+	
+		   <bean name="user" class="com.sikiedu.bean.User">
+		   		<property name="name" value="zxt"></property>
+		  		<property name="age" value="11"></property> 
+		   </bean>
+		   
+		   //spel表达式注入
+		   <bean name="user1" class="com.sikiedu.bean.User">
+		   		<property name="name" value="#{user.name}"></property>
+		  		<property name="age" value="#{user.age}"></property> 
+		   </bean>
+	   
+	    -->
+	   
+	   
+	   
+	   <!-- 
+	   	   //数组注入
+	   	   <bean name="collection" class="com.sikiedu.bean.Collection">
+		   		<property name="arr">
+		   			<array>
+		   				<value>xiaohei</value>
+		   				<value>123</value>
+		   			</array>
+		   		</property>
+		   </bean>
+	    -->
+	   
+	   
+	   <!-- 
+	   	   //list注入
+	   	   <bean name="collection" class="com.sikiedu.bean.Collection">
+		   		<property name="list">
+		   			<list>
+		   				<value>1</value>
+		   				<value>2</value>
+		   				<value>3</value>
+		   			</list>
+		   		</property>
+		   </bean>
+	    -->
+	   
+	   
+	   
+	   <!-- 
+	   		//map注入
+		   <bean name="collection" class="com.sikiedu.bean.Collection">
+		   		<property name="map">
+		   			<map>
+		   				<entry key="name" value="zxt"></entry>
+		   				<entry key="age" value="11"></entry>
+		   			</map>
+		   		</property>
+		   </bean>
+	    -->
+	   
+	   
+	   
+	   <!-- 
+	   		//properties类型注入
+		   <bean name="collection" class="com.sikiedu.bean.Collection">
+		   		<property name="props">
+		   			<props>
+		   				<prop key="name">xiaomi</prop>
+		   				<prop key="age">11</prop>
+		   			</props>
+		   		</property>
+		   </bean>
+	    -->
+	    
+	    <!-- 第一种方法：引入spring的分配置文件 -->
+	    <import resource="applicationContext2.xml"/>
+	    
+	    
+	    
+	    <!-- 开启注解扫描，扫描bean包下的所有类的注解-->
+	    <context:component-scan base-package="com.sikiedu.bean"></context:component-scan>
+	    
+	    
+	 	<!--   如需使用cglib动态代理可以再spring的配置文件中进行配置。 -->
+	    <!--  
+	   		<aop:config proxy-target-class="true"></aop:config>
+	   	 -->
+</beans>

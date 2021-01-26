@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>spring</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!--配置监听器 --> <!--以便在服务器启动的时候，加载spring配置文件-->
+  <!-- 其实配置文件不随服务器启动时加载也是可以的，但是这样操作的话，每次获取相应对象，就会去读取一次配置文件，从而降低程序的效率，而Spring中已经为我们提供了监听器，可监听服务器是否启动，然后在启动时，加载spring的配置文件，并且只加载一次，从而提高程序效率。 -->
+  <context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath: applicationContext.xml</param-value>
+  </context-param>
+	
+  <listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+</web-app>
